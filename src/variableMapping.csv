@@ -1,0 +1,10 @@
+styleName,variableName
+primary/$color-primary-default,color/primary/primary-default
+status/success/$color-success-default,color/status/success/success-default
+secondary/$color-secondary-default,color/secondary/secondary-default
+bg/white/$color-bg1-1,color/bg/white/bg1-1
+bg/gray/$color-bg2-1,color/bg/gray/bg2-1
+text-gray/$color-text1-1,color/text-gray/text1-1
+text-gray/$color-text1-2,color/text-gray/text1-2
+text-gray/$color-text1-3,color/text-gray/text1-3
+text-gray/$color-text1-4,color/text-gray/text1-4

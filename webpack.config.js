@@ -56,6 +56,21 @@ module.exports = (env, argv) => {
 
         // Allows you to use "<%= require('./file.svg') %>" in your HTML code to get a data URI
         { test: /\.(png|jpg|gif|webp|svg)$/, loader: 'url-loader' },
+
+      // Add csv-loader
+      {
+        test: /\.csv$/,
+        use: [
+          {
+            loader: 'csv-loader',
+            options: {
+              dynamicTyping: true,
+              header: true,
+              skipEmptyLines: true
+            }
+          }
+        ]
+      }
       ],
     },
 

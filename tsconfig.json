@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "es6",
     "jsx": "react",
-    "module": "AMD",
-    "moduleResolution": "nodenext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "resolveJsonModule": true,
     "lib": ["dom", "es2020", "dom.iterable"],
     "allowSyntheticDefaultImports": true,

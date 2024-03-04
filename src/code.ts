@@ -96,19 +96,20 @@ const fillStyleToVariable = async frame => {
       // const mixedFillStyleIDs = node.getStyledTextSegments(['fillStyleId'])
       const mixedFills = node.getStyledTextSegments(['fills','fillStyleId'])
       mixedFills.forEach(mixedNode => {
-        // style2variable(mixedNode.fillStyleId, mixedNode)
-        // figma.getStyleByIdAsync(mixedNode.fillStyleId).then(async r => {
-        //   console.log("style result", r)
-        //   const variable = await searchVariablesFromStyleName(r.name)
-        //   if (variable) {
-        //     const fillsCopy = JSON.parse(JSON.stringify(mixedFills[index].fills))
-        //     // console.log("found mapped varaibles", fillsCopy)
-        //     fillsCopy[0] = figma.variables.setBoundVariableForPaint(fillsCopy[0], 'color', variable)
-        //     // console.log("mixedFills", mixedFills[index], fillsCopy)
-        //     mixedFills[index].fills = fillsCopy
-        //     console.log("done action")
-        //   }
-        // }).catch(e => console.log(e))    
+        style2variable(mixedNode.fillStyleId, mixedNode)
+        figma.getStyleByIdAsync(mixedNode.fillStyleId).then(async r => {
+          console.log("style result", r)
+          const variable = await searchVariablesFromStyleName(r.name)
+          if (variable) {
+            const fillsCopy = JSON.parse(JSON.stringify(mixedNode.fills))
+            // console.log("found mapped varaibles", fillsCopy)
+            fillsCopy[0] = figma.variables.setBoundVariableForPaint(fillsCopy[0], 'color', variable)
+            // console.log("mixedFills", mixedFills[index], fillsCopy)
+            // mixedFills[index].fills = fillsCopy
+            node.setRangeFills(mixedNode.start, mixedNode.end, fillsCopy)
+            console.log("done action")
+          }
+        }).catch(e => console.log(e))    
       })
       // console.log(mixedFillText)
     }

@@ -18,7 +18,7 @@ window.addEventListener('message', async (event) => {
     let message = event.data.pluginMessage || {};
 
     if (message.type === 'uiInit') {
-        console.log('uiInit', message.data)
+        // console.log('uiInit', message.data)
         root.render(
             !PREVIEW_ENV ? <App/> : <PreviewApp />
         )

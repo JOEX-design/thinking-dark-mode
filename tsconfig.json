@@ -2,8 +2,8 @@
   "compilerOptions": {
     "target": "es6",
     "jsx": "react",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "module": "es2022",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "lib": ["dom", "es2020", "dom.iterable"],
     "allowSyntheticDefaultImports": true,

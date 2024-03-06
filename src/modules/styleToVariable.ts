@@ -26,7 +26,6 @@ const getNewStorkes = async (strokeStyleId, node, variableCollection) => {
 }
 
 const getNewFills = async (fillStyleId, node, variableCollection) => {
-  console.log("GETTING NEW FILLS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
   return await figma.getStyleByIdAsync(fillStyleId).then(async r => {
     const variable = await VariableCollection.searchVariablesFromStyle(r.name, variableCollection)
     if (variable) {
@@ -41,34 +40,10 @@ const getNewFills = async (fillStyleId, node, variableCollection) => {
 
 const fillStyleToVariable = async frame => {
   const variableCollection = await VariableCollection.getVariableCollection()
-  
-  // await Promise.all(frame.map(async (node,i) => {
-  //   if(node.fillStyleId == figma.mixed) {
-  //     const mixedFills = node.getStyledTextSegments(['fills','fillStyleId'])
-  //     await Promise.all(mixedFills.map(async mixedNode => {
-  //       const newMixedFills = await getNewFills(mixedNode.fillStyleId, mixedNode, variableCollection)
-  //       if(newMixedFills) {
-  //         node.setRangeFills(mixedNode.start, mixedNode.end, newMixedFills)
-  //       } 
-  //     }))
-  //   }    
-  
-  //   else {
-  //     const newFills = await getNewFills(node.fillStyleId, node, variableCollection)
-  //     if (newFills) {
-  //       node.fills =newFills
-  
-  //     }
-  //   }
-  
-  // }))
-  // await Promise.all(chunks(frame, 10).reduce((acc, chunk => {
-  
-  // })))
   const chunkedNodes = chunk(frame, 50);
 
   for (let nodes of chunkedNodes) {
-    const promises = nodes.map(async node => {
+    await Promise.all(nodes.map(async node => {
       if(node.fillStyleId == figma.mixed) {
         const mixedFills = node.getStyledTextSegments(['fills','fillStyleId'])
         await Promise.all(mixedFills.map(async mixedNode => {
@@ -88,8 +63,7 @@ const fillStyleToVariable = async frame => {
           
         }
       }
-    })
-    await Promise.allSettled(promises)
+    }))
     await delay(40)
   }
   
@@ -101,7 +75,6 @@ const strokeStyleToVariable = async frame => {
   await Promise.all(frame.map(async node => {
     const newStrokes = await getNewStorkes(node.strokeStyleId, node, variableCollection).catch(e=>console.log(e))
     if (newStrokes) {
-      // console.log("updateding strokes")
       node.strokes = newStrokes
       progressTracker.next()
     }    
@@ -118,11 +91,8 @@ export default async function styleToVariable(frameNodes) {
   progressTracker.startJob(totalTaskNodes)
   await fillStyleToVariable(nodeWithFillStyle)
   await strokeStyleToVariable(nodeWithStrokeStyle)
-  // console.timeEnd('styleToVariable')
   
   const endTime = Date.now()
   
   console.log(`Call to styleToVariable took ${endTime - startTime} milliseconds`)
-  
-  // console.log(nodeWithFillStyle.length, nodeWithStrokeStyle.length)
 }

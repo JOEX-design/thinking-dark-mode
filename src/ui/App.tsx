@@ -16,7 +16,6 @@ export const App = () => {
       const pluginMsg = msg.data.pluginMessage ? msg.data.pluginMessage : null
       
       if (pluginMsg && pluginMsg.type === 'progressUpdated') {
-        console.log("recieved progress: ", pluginMsg.data)
         setProgress(pluginMsg.data)
       }
     }

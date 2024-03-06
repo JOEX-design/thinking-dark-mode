@@ -1,6 +1,5 @@
 // @ts-ignore
 import variableMappingData from '../data/variableMapping.csv'
-import progressTracker from './ProgressTracker'
 
 const LIBRARY_KEYWORD = "黑漆麻乌"
 const STORAGE_KEY = 'variable_collection'
@@ -42,7 +41,6 @@ const searchVariablesFromStyle = async (styleName: String, variableCollection) =
 	if (searchResult.length != 0) {
 		console.log("VARAIBLES --- Found ", searchResult[0].variableName)
 		
-		// let variableCollection = await getVariableCollection()
 		const targetKeyPair = variableCollection.filter(variable => variable.name === searchResult[0].variableName)
 		const resultVariable = await figma.variables.importVariableByKeyAsync(targetKeyPair[0].key)
 		return resultVariable

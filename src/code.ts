@@ -61,9 +61,6 @@ figma.ui.onmessage = async msg => {
       // node.type === "INSTANCE"
       // node.type.length !== 0
       // ) as FrameNode[]
-      
-      // await fillStyleToVariable(paintNodes)
-      // await strokeStyleToVariable(paintNodes)
 
     }
     else figma.notify("请在文件的 Library 中打开变量库, 然后重新加载文件")

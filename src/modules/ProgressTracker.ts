@@ -38,7 +38,6 @@ class ProgressTracker {
 		// this.postToUI()
 	}
 	postToUI() {
-		console.log("postToUI")
 		figma.ui.postMessage({type: 'progressUpdated', data: {
 			totalNodes: this.totalNodes,
 		  totalTaskNodes: this.totalTaskNodes,

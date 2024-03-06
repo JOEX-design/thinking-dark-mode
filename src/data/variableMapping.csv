@@ -9,6 +9,7 @@ secondary/$color-secondary-default,color/secondary/secondary-default
 secondary/$color-secondary-disable,color/secondary/secondary-disable
 secondary/$color-secondary-fill,color/secondary/secondary-fill
 secondary/$color-secondary-fill-active,color/secondary/secondary-fill-active
+secondary/$color-secondary-fill-hover,color/secondary/secondary-fill-hover
 secondary/$color-secondary-transp-fill,color/secondary/secondary-transp-fill
 secondary/$color-secondary-transp-hover,color/secondary/secondary-transp-hover
 secondary/$color-secondary-transp-active,color/secondary/secondary-transp-active
@@ -51,4 +52,10 @@ status/warning/$color-warning-disabled,color/status/warning/warning-disabled
 status/warning/$color-warning-fill,color/status/warning/warning-fill-default
 status/warning/$color-warning-fill-hover,color/status/warning/warning-fill-hover
 status/warning/$color-warning-fill-active,color/status/warning/warning-fill-active
-,
+status/info/$color-info-default,color/status/info/info-default
+status/info/$color-info-hover,color/status/info/info-hover
+status/info/$color-info-active,color/status/info/info-active
+status/info/$color-info-disabled,color/status/info/info-disabled
+status/info/$color-info-fill,color/status/info/info-fill-default
+status/info/$color-info-fill-hover,color/status/info/info-fill-hover
+status/info/$color-info-fill-active,color/status/info/info-fill-active

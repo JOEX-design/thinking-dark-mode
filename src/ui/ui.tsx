@@ -24,3 +24,15 @@ window.addEventListener('message', async (event) => {
         )
     }
 });
+
+
+// window.onmessage = selection => {
+//     let message = selection.data.pluginMessage;
+//     console.log(message);
+
+//     if (message.type === 'uiInit') {
+//         root.render(
+//             !PREVIEW_ENV ? <App/> : <PreviewApp />
+//         )
+//     }
+//  }

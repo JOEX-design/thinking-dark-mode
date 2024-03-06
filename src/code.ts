@@ -48,7 +48,7 @@ figma.ui.onmessage = async msg => {
         await styleToVariable(paintNodes).catch(e => console.error(e))
         progressTracker.finishJob() 
       }
-      else figma.notify("选中需要完成转化的单个或多个图层后，点击“转化”")
+      else figma.notify("选中需要转化的单个或多个图层后，点击“转化”")
       // paintNode = selectedFrame[0].findAll( node => 
       // node.type === "FRAME" || 
       // node.type === "GROUP" || 

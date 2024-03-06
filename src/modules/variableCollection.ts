@@ -8,6 +8,7 @@ const setVariableCollection = async() => {
 	const libraryCollections = await figma.teamLibrary.getAvailableLibraryVariableCollectionsAsync()
 	const tempSaveCollections = []
 	let savedCollections
+	console.info({libraryCollections})
 	
 	for await (const collection of libraryCollections) {
 		if (collection.libraryName.includes(LIBRARY_KEYWORD)) {

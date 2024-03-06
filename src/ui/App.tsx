@@ -22,38 +22,42 @@ export const App = () => {
   }, [])
   return (
     <div className="flex flex-col gap-4 p-3 pt-5 h-full">
-    <h2 className="text-lg text-slate-600 font-medium text-center">⚡️ Style to Variable</h2>
-    <Button variant="primary" onClick={generate} className="mx-2">转化</Button>
-    {progress &&       
-      <div className="flex flex-col flex-1">
-      {!progress.complete && progress?.totalNodes !== 0 &&
-        <Loading text={"转化中"}></Loading>
-      }
-      {progress.complete &&
-        <div className="flex p-2.5 bg-green-50 justify-center m-5 rounded-md">
-          <span className="text-md text-green-700 text-center">✅ 转化完成</span> 
-        </div>}
-        <div className="flex justify-between p-2">
-          <div className="flex flex-col gap-0 items-center">
-            <span className="text-lg text-slate-600 font-medium">{progress?.totalNodes}</span>
-            <span className="text-sm text-slate-400">选中的图层节点</span>
-          </div>
-          <div className="flex flex-col gap-0 items-center">
-            <span className="text-lg text-slate-600 font-medium">{progress?.totalTaskNodes}</span>
-            <span className="text-sm text-slate-400">含Style节点</span>
-          </div>
-          <div className="flex flex-col gap-0 items-center">
-            <span className="text-lg text-slate-600 font-medium">{progress?.finishedTaskNodes}</span>
-            <span className="text-sm text-slate-400">转化成功节点</span>
-          </div>
-        {/* <span>{progress?.finishedTaskNodes} / {progress?.totalTaskNodes}</span> */}
-        </div>
-      </div>}
-      {!progress &&
-        <div className="flex flex-1 bg-slate-100 rounded-md p-8 text-slate-400 text-sm items-center content-center border-slate-200 border">
-          <div className="text-center">选中需要完成转化的单个或多个图层后，点击“转化”</div>
-        </div>
-      }
+      <h2 className="text-lg text-slate-600 font-medium text-center">⚡️ Style To Variable ⚡️</h2>
+      <Button variant="primary" onClick={generate} className="mx-2">转化</Button>
+      <div className="flex flex-1 bg-slate-100 rounded-md px-6 text-slate-400 text-sm items-center content-center border-slate-200 border shadow-inner">
+        {progress &&       
+          <div className="flex flex-col w-full">
+            <div className="h-20 flex justify-center items-center">
+              {!progress.complete && progress?.totalNodes !== 0 &&
+                <Loading text={"转化中"}></Loading>
+              }
+              {progress.complete &&
+                <div className="flex p-2.5 justify-center rounded-md w-full h-fit ">
+                  <span className="text-md font-medium text-green-600 text-center">✅ 转化完成</span> 
+                </div>
+              }
+            </div>
+ 
+            <div className="flex justify-between">
+              <div className="flex flex-col gap-0 items-center">
+                <span className="text-md text-slate-600 font-semibold">{progress?.totalNodes}</span>
+                <span className="text-xs text-slate-400">选中的图层节点</span>
+              </div>
+              <div className="flex flex-col gap-0 items-center">
+                <span className="text-md text-slate-600 font-semibold">{progress?.totalTaskNodes}</span>
+                <span className="text-xs text-slate-400">含Style节点</span>
+              </div>
+              <div className="flex flex-col gap-0 items-center">
+                <span className="text-md text-green-600 font-semibold">{progress?.finishedTaskNodes}</span>
+                <span className="text-xs text-slate-400">转化成功节点</span>
+              </div>
+            </div>
+          </div>}
+        {!progress &&
+          <div className="text-center px-4">选中需要转化的单个或多个图层后，点击“转化”</div>
+        }
+      </div>
+
     </div>
   )
 }

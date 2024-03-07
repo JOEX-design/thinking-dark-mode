@@ -3,11 +3,12 @@ import { useState, useEffect } from 'react';
 
 import { Button } from "./components/Button";
 import { Loading } from "./components/Loading";
-
+import Count from "./components/Count";
 
 export const App = () => {
   const [progress, setProgress] = useState(null);
   const generate = () => {
+    setProgress(null)
     parent.postMessage({ pluginMessage: { type: 'clickGenerate' } }, '*')
   }
   
@@ -40,15 +41,21 @@ export const App = () => {
  
             <div className="flex justify-between">
               <div className="flex flex-col gap-0 items-center">
-                <span className="text-md text-slate-600 font-semibold">{progress?.totalNodes}</span>
+                <span className="text-md text-slate-600 font-semibold">
+                  <Count floor={0} target={progress?.totalNodes} />
+                </span>
                 <span className="text-xs text-slate-400">选中的图层节点</span>
               </div>
               <div className="flex flex-col gap-0 items-center">
-                <span className="text-md text-slate-600 font-semibold">{progress?.totalTaskNodes}</span>
+                <span className="text-md text-slate-600 font-semibold">
+                  <Count floor={0} target={progress?.totalTaskNodes} />                  
+                </span>
                 <span className="text-xs text-slate-400">含Style节点</span>
               </div>
               <div className="flex flex-col gap-0 items-center">
-                <span className="text-md text-green-600 font-semibold">{progress?.finishedTaskNodes}</span>
+                <span className="text-md text-green-600 font-semibold">
+                  <Count floor={0} target={progress?.finishedTaskNodes} />
+                </span>
                 <span className="text-xs text-slate-400">转化成功节点</span>
               </div>
             </div>

@@ -1,0 +1,18 @@
+.count {
+  /* Use CSS variable for transition */
+  --number: 0;
+  
+  /* Appearance properties */
+  font-size: 2em;
+  width: 4em;
+  text-align: center;
+
+  /* The counter uses the before pseudo-element to display the variable number */
+  counter-reset: num var(--number);
+  counter-increment: num var(--number);
+}
+
+.count::before {
+  content: counter(num);
+  transition: counter num 0.1s ease-out;
+}

@@ -40,7 +40,7 @@ const getNewFills = async (fillStyleId, node, variableCollection) => {
 
 const fillStyleToVariable = async frame => {
   const variableCollection = await VariableCollection.getVariableCollection()
-  const chunkedNodes = chunk(frame, 50);
+  const chunkedNodes = chunk(frame, 40);
 
   for (let nodes of chunkedNodes) {
     await Promise.all(nodes.map(async node => {
